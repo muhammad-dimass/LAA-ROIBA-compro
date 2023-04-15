@@ -3,6 +3,7 @@
 require_once('function/koneksi.php');
 
 $process = isset($_GET['process']) ? ($_GET['process']) : false;
+$status = isset($_GET['status']) ? ($_GET['status']) : false;
 ?>
 
 
@@ -10,6 +11,13 @@ $process = isset($_GET['process']) ? ($_GET['process']) : false;
     <div class="alert alert-success" role="alert">
         Data behasil dimasukan
     </div>
+
+<?php endif; ?>
+<?php if ($status == 'success') : ?>
+    <div class="alert alert-success" role="alert">
+        Data behasil dihapus
+    </div>
+
 <?php endif; ?>
 
 <!-- mengambil data dari database -->
@@ -46,7 +54,7 @@ $pegawai = mysqli_query($koneksi, "SELECT * FROM pegawai");
                                 <td><?= $p['email'] ?></td>
                                 <td><?= $p['alamat'] ?></td>
                                 <td>
-                                    <a class="btn btn-danger badge">Delete</a>
+                                    <a class="btn btn-danger badge" href="<?= BASE_URL . 'process/process_delete.php?id=' . $p['id'] ?>">Delete</a>
                                     <a class="btn btn-info badge" href="<?= BASE_URL . 'dashboard.php?page=edit&id=' . $p['id'] ?>">Edit</a>
                                 </td>
                             </tr>

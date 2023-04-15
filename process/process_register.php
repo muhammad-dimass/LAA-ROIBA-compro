@@ -7,9 +7,9 @@ $username = $_POST['username'];
 $password = $_POST['password'];
 $repassword = $_POST['repassword'];
 
-// Pengecekan kelengkapan data
+// Kondisi untuk register
 if (empty($username) || empty($password) || empty($repassword)) {
-    header("location: " . BASE_URL . 'register.php?process=failed');
+    header("location: " . BASE_URL . 'register.php?process=failedempty');
 } else {
     if ($password != $repassword) {
         header("location: " . BASE_URL . 'register.php?process=failedpassword');
@@ -18,9 +18,9 @@ if (empty($username) || empty($password) || empty($repassword)) {
         if (mysqli_num_rows($query) != 0) {
             header("location: " . BASE_URL . 'register.php?process=failedusername');
         } else {
-            $md5 = md5($password);
-            mysqli_query($koneksi, "INSERT INTO admin(username, password) VALUES ('$username', '$md5')");
-            header("location: " . BASE_URL . '?process=success');
+            $passwordMd5 = md5($password);
+            mysqli_query($koneksi, "INSERT INTO admin (username, password) VALUES ('$username', '$passwordMd5')");
+            header("location: " . BASE_URL . '?process=successregister');
         }
     }
 }

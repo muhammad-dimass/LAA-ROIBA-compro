@@ -2,7 +2,7 @@
 
 require_once('function/helper.php');
 require_once('function/koneksi.php');
-
+$process = isset($_GET['process']) ? ($_GET['process']) : false;
 ?>
 
 
@@ -32,6 +32,11 @@ require_once('function/koneksi.php');
             <div class="card-main">
                 <div class="card-header">Form Login</div>
                 <div class="card-body">
+                    <?php if ($process == 'successregister') : ?>
+                        <div class="alert alert-success" style="background-color: green; padding: 1em; color: white;border-radius: 20px;">
+                            Register berhasil, silahkan masuk dengan akun anda
+                        </div>
+                    <?php endif; ?>
                     <form class="form-login" method="POST" action="<?= BASE_URL . 'process/process_login.php' ?>">
                         <label class="form-label">Username</label>
                         <input type="username" name="username" class="form-input">

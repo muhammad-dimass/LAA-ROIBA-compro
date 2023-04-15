@@ -33,16 +33,20 @@ $process = isset($_GET['process']) ? ($_GET['process']) : false;
         <div class="card-login">
             <div class="card-main">
                 <div class="card-header">Form Register</div>
-
                 <div class="card-body">
-                    <?php if ($process == 'failedpassword') : ?>
-                        <div class="alert alert-danger" role="alert" style="background-color: red; padding: 1em; color: white; border-radius: 20px;">
-                            Register gagal konfirmasi password tidak sesuai
+                    <?php if ($process == 'failedempty') : ?>
+                        <div class="alert alert-danger" style="background-color: red; padding: 1em; color: white;border-radius: 20px;">
+                            Register gagal, terdapat form yang kosong
                         </div>
                     <?php endif; ?>
                     <?php if ($process == 'failedusername') : ?>
-                        <div class="alert alert-danger" role="alert" style="background-color: red; padding: 1em; color: white; border-radius: 20px;">
-                            Register gagal username sudah terdaftar
+                        <div class="alert alert-danger" style="background-color: red; padding: 1em; color: white;border-radius: 20px;">
+                            Register gagal, username sudah terdaftar di database
+                        </div>
+                    <?php endif; ?>
+                    <?php if ($process == 'failedpassword') : ?>
+                        <div class="alert alert-danger" style="background-color: red; padding: 1em; color: white;border-radius: 20px;">
+                            Register gagal, password tidak sesuai
                         </div>
                     <?php endif; ?>
                     <form class="form-login" method="POST" action="<?= BASE_URL . 'process/process_register.php' ?>">
@@ -50,11 +54,11 @@ $process = isset($_GET['process']) ? ($_GET['process']) : false;
                         <input type="username" name="username" class="form-input">
                         <label class="form-label">Password</label>
                         <input type="password" name="password" class="form-input">
-                        <label class="form-label">Re-password</label>
+                        <label class="form-label">Re-Password</label>
                         <input type="password" name="repassword" class="form-input">
                         <button type="submit" class="btn btn-login">Register</button>
                     </form>
-                    <p style="text-align: center;">Sudah punya akun?<span><a href="<?= BASE_URL . "register.php" ?>" class=""> Masuk disini</a></span></p>
+                    <p style="text-align: center;">Sudah punya akun?<span><a href="<?= BASE_URL . "index.php" ?>" class=""> Masuk disini</a></span></p>
                 </div>
             </div>
         </div>

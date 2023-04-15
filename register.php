@@ -3,6 +3,8 @@
 require_once('function/helper.php');
 require_once('function/koneksi.php');
 
+$process = isset($_GET['process']) ? ($_GET['process']) : false;
+
 ?>
 
 
@@ -30,8 +32,19 @@ require_once('function/koneksi.php');
     <div class="content">
         <div class="card-login">
             <div class="card-main">
-                <div class="card-header">Form Login</div>
+                <div class="card-header">Form Register</div>
+
                 <div class="card-body">
+                    <?php if ($process == 'failedpassword') : ?>
+                        <div class="alert alert-danger" role="alert" style="background-color: red; padding: 1em; color: white; border-radius: 20px;">
+                            Register gagal konfirmasi password tidak sesuai
+                        </div>
+                    <?php endif; ?>
+                    <?php if ($process == 'failedusername') : ?>
+                        <div class="alert alert-danger" role="alert" style="background-color: red; padding: 1em; color: white; border-radius: 20px;">
+                            Register gagal username sudah terdaftar
+                        </div>
+                    <?php endif; ?>
                     <form class="form-login" method="POST" action="<?= BASE_URL . 'process/process_register.php' ?>">
                         <label class="form-label">Username</label>
                         <input type="username" name="username" class="form-input">

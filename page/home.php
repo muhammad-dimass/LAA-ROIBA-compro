@@ -1,67 +1,68 @@
-<?php
-
-require_once('function/koneksi.php');
-
-$process = isset($_GET['process']) ? ($_GET['process']) : false;
-$status = isset($_GET['status']) ? ($_GET['status']) : false;
-?>
-
-
-<?php if ($process == 'success') : ?>
-    <div class="alert alert-success" role="alert">
-        Data behasil dimasukan
-    </div>
-
-<?php endif; ?>
-<?php if ($status == 'success') : ?>
-    <div class="alert alert-success" role="alert">
-        Data behasil dihapus
-    </div>
-
-<?php endif; ?>
-
-<!-- mengambil data dari database -->
-<?php
-
-$pegawai = mysqli_query($koneksi, "SELECT * FROM pegawai");
-
-?>
-
-<div class="card">
-    <div class="card-body">
-        <div class="row">
-            <div class="col-md-6">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Nama</th>
-                            <th scope="col">Nomor ID</th>
-                            <th scope="col">Nomor HP</th>
-                            <th scope="col">Email</th>
-                            <th scope="col">Alamat</th>
-                            <th scope="col">Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php $no = 1; ?>
-                        <?php foreach ($pegawai as $p) : ?>
-                            <tr>
-                                <th scope="row"><?= $no++; ?></th>
-                                <td><?= $p['nama'] ?></td>
-                                <td><?= $p['noid'] ?></td>
-                                <td><?= $p['nohp'] ?></td>
-                                <td><?= $p['email'] ?></td>
-                                <td><?= $p['alamat'] ?></td>
-                                <td>
-                                    <a class="btn btn-danger badge" href="<?= BASE_URL . 'process/process_delete.php?id=' . $p['id'] ?>">Delete</a>
-                                    <a class="btn btn-info badge" href="<?= BASE_URL . 'dashboard.php?page=edit&id=' . $p['id'] ?>">Edit</a>
-                                </td>
-                            </tr>
-                        <?php endforeach; ?>
-                    </tbody>
-                </table>
+<main>
+            <div class="head-title">
+                <div class="left">
+                    <h1>Dashboard</h1>
+                    <ul class="breadcrumb">
+                        <li>
+                            <a href="#">Dashboard</a>
+                        </li>
+                        <li><i class='bx bxs-dashboard' ></i></li>
+                        <li>
+                            <a class="active" href="#">Admin</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
-        </div>
-    </div>
-</div>
+            <ul class="box-info">
+                <li>
+                    <i class='bx bxs-dashboard' ></i>
+                    <span class="text">
+                        <h3><a href="dashboard.php?page=banner/banner">Banner</a></h3>
+                        <p>Info Banner</p>
+                    </span>
+                </li>
+                <li>
+                     <i class='bx bxs-dashboard'></i>
+                    <span class="text">
+                        <h3><a href="dashboard.php?page=struktural/struktural">Struktural</a></h3>
+                        <p>Info Struktural</p>
+                    </span>
+                </li>
+                <li>
+                     <i class='bx bxs-dashboard' ></i>
+                    <span class="text">
+                        <h3><a href="dashboard.php?page=visi_misi/visi_misi">Visi & Misi</a></h3>
+                        <p>Info Visi & Misi</p>
+                    </span>
+                </li>
+            </ul>
+
+            <ul class="box-info">
+                <li>
+                    <i class='bx bxs-dashboard' ></i>
+                    <span class="text">
+                        <h3><a href="dashboard.php?page=footer/footer">Footer</a></h3>
+                        <p>Info Footer</p>
+                    </span>
+                </li>
+                <li>
+                     <i class='bx bxs-dashboard' ></i>
+                    <span class="text">
+                        <h3><a href="dashboard.php?page=berita/berita">Berita</a></h3>
+                        <p>Info Berita</p>
+                    </span>
+                </li>
+                <li>
+                     <i class='bx bxs-dashboard' ></i>
+                    <span class="text">
+                        <h3><a href="process/process_logout.php">Logout</a></h3>
+                    </span>
+                </li>
+            </ul>
+
+
+
+                </div>
+                
+            </div>
+        </main>

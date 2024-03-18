@@ -1,3 +1,3 @@
 <?php
 
-define("BASE_URL", "http://localhost/phpnativecrud/");
+define("BASE_URL", "http://localhost/screen tools/");

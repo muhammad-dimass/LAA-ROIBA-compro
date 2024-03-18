@@ -1,6 +1,6 @@
 <?php
 
-require_once('../function/helper.php');
+// require_once('../function/helper.php');
 require_once('../function/koneksi.php');
 
 // Menangkap request
@@ -18,7 +18,7 @@ if (mysqli_num_rows($query) != 0) {
     // Membuat session
     session_start();
     $_SESSION['id'] = $row['id'];
-    header("location: " . BASE_URL . 'dashboard.php?page=home');
+    header("location: ../dashboard.php?page=home");
 } else {
-    header("location: " . BASE_URL);
+    header("location: ../index.php");
 }
